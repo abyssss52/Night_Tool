@@ -5,7 +5,7 @@
 #   Editor      : Pycharm
 #   File name   : Omnipotent_Image_Converter_Tool.py
 #   Author      : night
-#   Description : 用于储存常用工具
+#   Description : 用于储存常用图像转换工具
 #   Date        : 2020.01.06
 #
 #================================================================
