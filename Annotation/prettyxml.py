@@ -25,4 +25,4 @@ def prettyXml(element, indent, newline, level = 0): # elemnt为传进来的Elmen
             subelement.tail = newline + indent * (level + 1)
         else:  # 如果是list的最后一个元素， 说明下一行是母元素的结束，缩进应该少一个
             subelement.tail = newline + indent * level
-        prettyXml(subelement, indent, newline, level = level + 1) # 对子元素进行递归操作  
+        prettyXml(subelement, indent, newline, level = level + 1) # 对子元素进行递归操作
