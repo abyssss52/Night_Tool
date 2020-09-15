@@ -1,7 +1,7 @@
 import scipy.io as scio
 import os
 
-path = '/home/night/Datasets/face/300W/AFLW2000-3D/AFLW2000'
+path = '/home/night/Datasets/face/300W-LP/AFW'# '/home/night/Datasets/face/300W/AFLW2000-3D/AFLW2000'
 file_list = os.listdir(path)
 mat_file_list = []
 for file in file_list:

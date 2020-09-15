@@ -16,9 +16,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Random Moving Images')
     parser.add_argument('--ori_images_path', default='/home/night/Datasets/face/face_mask/incorrect_image', type=str,
                         help='The path of original images')
-    parser.add_argument('--new_images_path', default='/home/night/Datasets/face/face_mask/train/face', type=str,
+    parser.add_argument('--new_images_path', default='/home/night/Datasets/face/face_mask/val/face', type=str,
                         help='The new path of those images')
-    parser.add_argument('--img_num', default=871, type=int, help='The number of images I need to move.')
+    parser.add_argument('--img_num', default=379, type=int, help='The number of images I need to move.')
 
     args = parser.parse_args()
 
