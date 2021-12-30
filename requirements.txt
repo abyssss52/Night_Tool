@@ -4,3 +4,4 @@ PIL
 os
 shutil
 cocoapi
+tqdm
