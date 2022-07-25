@@ -13,8 +13,10 @@ import os
 import cv2
 from tqdm import tqdm
 
-ori_img_path = '/media/li/G1/Projects/Defect_Detection/YOLOX/datasets/VOCdevkit/VOC2007/JPEGImages'
-
+# ori_img_path = '/media/li/G1/Projects/Defect_Detection/YOLOX/datasets/VOCdevkit/VOC2007/JPEGImages'
+# ori_img_path = '/media/li/G1/Projects/Defect_Detection/YOLOX/datasets/COCO/train2022'
+ori_img_path = '/media/li/G1/Projects/Defect_Detection/YOLOX/datasets/COCO/val2022'
+# ori_img_path = '/media/li/G1/Projects/Defect_Detection/YOLOX/datasets/COCO/test2022'
 
 if os.path.exists(ori_img_path + '_1'):
     print('保存路径已存在！')

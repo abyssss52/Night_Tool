@@ -9,7 +9,7 @@ import glob
 
 
 
-# classes = ["xiangmen","xiangtou","topTruckNumPos","truckhead", "topTruckNumNeg","twoDimensionalCode"]  #车顶号选用
+# classes = ["xiangmen","xiangtou","topTruckN   umPos","truckhead", "topTruckNumNeg","twoDimensionalCode"]  #车顶号选用
 # xml_image_path = "I:/testData/Wood/Third/traindata/traindata"
 # xml_save_path = 'I:/testData/Wood/Third/traindata/车头车号检测第三次优化/labels/'
 # image_save_path = 'I:/testData/Wood/Third/traindata/车头车号检测第三次优化/images/'

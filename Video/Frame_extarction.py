@@ -61,6 +61,6 @@ if __name__ == "__main__":
     img_num = 0
     file_idx = 0
     # 单个视频
-    video_path = 'G:/Image_Composite_Editor/Cache/20211224134126_0e9ba65d82fb40e887bfbcb58e22ebdb.mp4'
+    video_path = 'G:/Image_Composite_Editor/Cache/20211229173856_9eba45a269f74a86a388c0f55e599800.mp4'
     image_save_path = 'G:/Image_Composite_Editor/Cache/extract'
     img_num, file_idx = Exact_Frame(video_path, image_save_path, img_num, file_idx)

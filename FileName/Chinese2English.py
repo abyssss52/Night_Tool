@@ -52,8 +52,14 @@ CLASS_MAPPING = {
 # ori_path = ['I:/testData/Wood/Forth/WoodNumAnno']
 # new_path = 'I:/testData/Wood/Forth/WoodNumAnno_en'
 
-ori_path = ['G:/Public_Data_Sets/大铲湾岸桥/车顶号/车顶车架20211214最终整合版/DachanwanRoofNum20211210_new']
-new_path = 'G:/Public_Data_Sets/大铲湾岸桥/车顶号/车顶车架20211214最终整合版/DachanwanRoofNum_en'
+# ori_path = ['G:/Public_Data_Sets/大铲湾岸桥/车顶号/车顶车架20211214最终整合版/DachanwanRoofNum20211210_new']
+# new_path = 'G:/Public_Data_Sets/大铲湾岸桥/车顶号/车顶车架20211214最终整合版/DachanwanRoofNum_en'
+
+# ori_path = ['G:/Public_Data_Sets/新箱号/岸桥/大铲湾/问题箱号']
+# new_path = 'G:/Public_Data_Sets/新箱号/岸桥/大铲湾/问题箱号'
+
+ori_path = ['F:/Codes/VSProjects/Work/AICoreLib_container/x64/Release/AILIB/imgs_container/四行箱号']
+new_path = 'F:/Codes/VSProjects/Work/AICoreLib_container/x64/Release/AILIB/imgs_container/四行箱号'
 
 if not os.path.exists(new_path):
     os.makedirs(new_path)
@@ -63,10 +69,19 @@ for file in tqdm(ori_path):
         file_name, suffix = os.path.splitext(name)
         if CLASS_MAPPING.get(file_name.split('_')[1]) is None:
             print(file_name.split('_')[1])
+        # if CLASS_MAPPING.get(file_name.split('_')[2]) is None:
+        #     print(file_name.split('_')[2])
         else:
             num = len(file_name.split('_'))
             if num != 3:
                 print(num)
                 print(file_name)
-            shutil.copy2(os.path.join(file, name), os.path.join(new_path, file_name.split('_')[0] + '_' + CLASS_MAPPING.get(file_name.split('_')[1]) + '_' + file_name.split('_')[2].zfill(2) + suffix))
-
+            # shutil.copy2(os.path.join(file, name), os.path.join(new_path, file_name.split('_')[0] + '_' + CLASS_MAPPING.get(file_name.split('_')[1]) + '_' + file_name.split('_')[2].zfill(2) + suffix))
+            shutil.move(os.path.join(file, name), os.path.join(new_path,
+                                                                file_name.split('_')[0] + '_' + CLASS_MAPPING.get(
+                                                                    file_name.split('_')[1]) + '_' +
+                                                                file_name.split('_')[2].zfill(2) + suffix))
+            # shutil.move(os.path.join(file, name), os.path.join(new_path,
+            #                                                     file_name.split('_')[0] + '_' + CLASS_MAPPING.get(
+            #                                                         file_name.split('_')[2]) + '_' +
+            #                                                     file_name.split('_')[3] + suffix))

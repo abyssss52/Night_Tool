@@ -55,6 +55,8 @@ def rotate(img, angle):
     # rows, cols, _ = img.shape
     if angle == 270:
         dst = np.rot90(np.rot90(np.rot90(img)))
+    if angle == 180:
+        dst = np.rot90(np.rot90(img))
     return dst
 
 if __name__=='__main__':
@@ -64,8 +66,14 @@ if __name__=='__main__':
     # img_path = ['I:/testData/TrainNum/First/12-11', 'I:/testData/TrainNum/First/12-12', 'I:/testData/TrainNum/First/12-13', 'I:/testData/TrainNum/First/12-14', 'I:/testData/TrainNum/First/12-15', 'I:/testData/TrainNum/First/12-16']
     # save_path = 'I:/testData/TrainNum/First/TrainAnno_2'
 
-    img_path = ['I:/testData/TrainNum/JSQ6/JSQ6_ori']
-    save_path = 'I:/testData/TrainNum/JSQ6/JSQ6_Anno'
+    # img_path = ['I:/testData/TrainNum/JSQ6/JSQ6_ori']
+    # save_path = 'I:/testData/TrainNum/JSQ6/JSQ6_Anno'
+
+    # img_path = ['I:/testData/TrainNum/X/X_ori']
+    # save_path = 'I:/testData/TrainNum/X/X_Anno'
+
+    img_path = ['G:/Public_Data_Sets/tmp/posTopNum']
+    save_path = 'G:/Public_Data_Sets/tmp/posTopNumflip'
 
     # 镜像处理
     # for img in os.listdir(img_path):
@@ -78,14 +86,14 @@ if __name__=='__main__':
     #     cv2.imwrite(os.path.join(save_path, img), image)
 
     # 分割图片
-    for j in range(len(img_path)):
-        for img in tqdm(os.listdir(img_path[j])):
-            # image = cv2.imread(os.path.join(img_path[i], img))
-            image = cv2.imdecode(np.fromfile(os.path.join(img_path[j], img), dtype=np.uint8), -1)
-            image_list = crop(image, 0.5, 0)      # 220
-            for i in range(len(image_list)):
-                img_name, suffix = os.path.splitext(img)
-                cv2.imwrite(os.path.join(save_path, img_name + str(i).zfill(2)+ suffix), image_list[i])
+    # for j in range(len(img_path)):
+    #     for img in tqdm(os.listdir(img_path[j])):
+    #         # image = cv2.imread(os.path.join(img_path[i], img))
+    #         image = cv2.imdecode(np.fromfile(os.path.join(img_path[j], img), dtype=np.uint8), -1)
+    #         image_list = crop(image, 0.5, 0)      # 220
+    #         for i in range(len(image_list)):
+    #             img_name, suffix = os.path.splitext(img)
+    #             cv2.imwrite(os.path.join(save_path, img_name + str(i).zfill(2)+ suffix), image_list[i])
 
 
     # 补padding
@@ -104,9 +112,9 @@ if __name__=='__main__':
 
 
     # 旋转图片
-    # for j in range(len(img_path)):
-    #     for img in tqdm(os.listdir(img_path[j])):
-    #         image = cv2.imdecode(np.fromfile(os.path.join(img_path[j], img), dtype=np.uint8), -1)
-    #         rotate_image = rotate(image, 270)
-    #         img_name, suffix = os.path.splitext(img)
-    #         cv2.imwrite(os.path.join(save_path, img_name + '_rotate'+ suffix), rotate_image)
+    for j in range(len(img_path)):
+        for img in tqdm(os.listdir(img_path[j])):
+            image = cv2.imdecode(np.fromfile(os.path.join(img_path[j], img), dtype=np.uint8), -1)
+            rotate_image = rotate(image, 180)
+            img_name, suffix = os.path.splitext(img)
+            cv2.imwrite(os.path.join(save_path, img_name + '_flip'+ suffix), rotate_image)

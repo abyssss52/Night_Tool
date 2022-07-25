@@ -13,9 +13,15 @@ import cv2
 import xml.dom.minidom
 import numpy as np
 
-img_path = 'G:/Public_Data_Sets/大铲湾岸桥/车顶号/标注车顶车架号/DachanwanRoofNum20211110_all'
-Ann_path = 'G:/Public_Data_Sets/大铲湾岸桥/车顶号/标注车顶车架号/DachanwanRoofNum20211110_all'
+# img_path = 'G:/Public_Data_Sets/大铲湾岸桥/车顶号/标注车顶车架号/DachanwanRoofNum20211110_all'
+# Ann_path = 'G:/Public_Data_Sets/大铲湾岸桥/车顶号/标注车顶车架号/DachanwanRoofNum20211110_all'
 
+img_path = 'G:/Public_Data_Sets/大铲湾岸桥/车顶号/车顶车架20211214最终整合版/DachanwanRoofNum_Final/images'
+Ann_path = 'G:/Public_Data_Sets/大铲湾岸桥/车顶号/车顶车架20211214最终整合版/DachanwanRoofNum_Final/labels'
+topNumpath = 'G:/Public_Data_Sets/大铲湾岸桥/车顶号/车顶车架20211214最终整合版/DachanwanRoofNum_Final/topNum'
+
+# img_path = 'G:/Public_Data_Sets/多国车牌/老挝/老挝/老挝车牌图片3'
+# Ann_path = 'G:/Public_Data_Sets/多国车牌/老挝/老挝/老挝车牌图片3'
 image_list = os.listdir(img_path)
 sorted(image_list)
 
@@ -38,10 +44,11 @@ for image in image_list:
             image_height = image_size[0].getElementsByTagName('height')[0].childNodes[0].data
 
             objectlist = annotation.getElementsByTagName('object')
+            num = 0;
             for object in objectlist:
                 namelist = object.getElementsByTagName('name')
                 # print 'namelist:',namelist
-                objectname = namelist[0].childNodes[0].data
+                objectname = namelist[0].childNodes[0].data.encode('utf-8').decode('utf-8-sig')
 
                 bndbox = object.getElementsByTagName('bndbox')
                 for box in bndbox:
@@ -53,13 +60,18 @@ for image in image_list:
                     x2 = int(x2_list[0].childNodes[0].data)
                     y2_list = box.getElementsByTagName('ymax')
                     y2 = int(y2_list[0].childNodes[0].data)
-                    cv2.rectangle(img, (x1, y1), (x2, y2), (255, 0, 0), 2)
-                    cv2.putText(img, objectname, (x1, y1 - 20), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (255, 0, 0), 2)
-            img = cv2.resize(img, (960,540))
-            cv2.imshow('result', img)
-            cv2.waitKey(0)
-            # while(1):
-            #     pass
+                    # 展示标注框
+                    # cv2.rectangle(img, (x1, y1), (x2, y2), (255, 0, 0), 2)
+                    # cv2.putText(img, objectname, (x1, y1 - 20), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (255, 0, 0), 2)
+                    # 截取标注框
+                    if (objectname.split('#')[0] == "topTruckNumNeg"):
+                        # crop_img = img[y1:y2, x1:x2, :]
+                        cv2.rectangle(img, (x1, y1), (x2, y2), (255, 0, 0), 2)
+                        cv2.imencode('.jpg', img)[1].tofile(os.path.join(topNumpath, image_pre + '_' + str(num) + '.jpg'))
+            # 展示标注框
+            # img = cv2.resize(img, (960,540))
+            # cv2.imshow('result', img)
+            # cv2.waitKey(0)
         except:
             cv2.imshow('result', img)
             cv2.waitKey(0)
